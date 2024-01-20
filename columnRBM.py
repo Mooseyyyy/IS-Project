@@ -1,5 +1,6 @@
 from rbm import RBM
 import numpy as np
+#temp
 
 # Initialization of RBM
 rbm1 = RBM(num_visible = 5, num_hidden = 3)
