@@ -34,3 +34,10 @@ print("Done training")
 # Generate data
 print("Daydream")
 print(training_rbm.daydream(5))
+
+# Function to evaluate generated outputs
+def evalate(input): 
+  gen = input[-1,:]
+  dp1 = np.array([1,0,1,0,0,0,0,1,0,0,1,1,0,0,0])
+  dp2 = np.array([0,0,0,0,1,0,1,0,0,1,0,0,1,0,1])
+  dp2 = np.array([0,1,0,1,0,1,0,0,1,0,0,0,0,1,0])
