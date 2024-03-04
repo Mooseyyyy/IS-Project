@@ -4,17 +4,19 @@ import numpy as np
 from util import generate, compare
 
 # How many times to sample a dp
-sample = 30
+sample = 2000
 
 # Numpy print settings to see activated nodes better
 np.set_printoptions(linewidth=np.inf, formatter={'all': lambda x: " {:.0f} ".format(x)})
 
 # Initialization of RBM
-training_rbm = RBM(num_visible = 100, num_hidden = 40)
+training_rbm = RBM(num_visible = 100, num_hidden = 50)
 
-training_data = generate(60)
+training_data = generate(600)
 
 np.random.shuffle(training_data)
+
+print(training_data[0:10])
 
 # Training the model
 training_rbm.train(training_data, max_epochs = 5000)
@@ -22,8 +24,25 @@ print("Done training")
 
 # Generate data
 print("Daydream Phase")
+countBad = 0
+countGroup1 = 0
+countGroup2 = 0
+countGroup3 = 0
 for i in range(50):
     array = training_rbm.daydream(sample)
     newArray = array[sample-1:sample]
     result, name = compare(newArray)
+    if name == "Bad":
+        countBad+=1
+    if name == "Group 1":
+        countGroup1+=1
+    if name == "Group 2":
+        countGroup2+=1
+    if name == "Group 3":
+        countGroup3+=1
     print(name)
+
+print(countBad)
+print(countGroup1)
+print(countGroup2)
+print(countGroup3)

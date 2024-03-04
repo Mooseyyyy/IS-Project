@@ -1,7 +1,7 @@
 import numpy as np
 from scipy.spatial.distance import hamming
 
-group1 = np.array([1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0])
+group1= np.array([1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0])
 group2 = np.array([0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0])
 group3 = np.array([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0])
 group4 = np.array([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0])
@@ -18,17 +18,15 @@ def generate(size):
     dup = size // 6
 
     largeGroup1 = np.tile(group1,(dup, 1))
-    #print(largeGroup1[0:10])
-    largeGroup2 = np.tile(group2,(dup,1))
-    largeGroup3 = np.tile(group3,(dup,1))
-    largeGroup4 = np.tile(group5,(dup,1))
-    largeGroup5 = np.tile(group4,(dup,1))
-    largeGroup6 = np.tile(group6,(dup,1))
+    largeGroup2 = np.tile(group2,(dup, 1))
+    largeGroup3 = np.tile(group3,(dup, 1))
+    largeGroup4 = np.tile(group5,(dup, 1))
+    largeGroup5 = np.tile(group4,(dup, 1))
+    largeGroup6 = np.tile(group6,(dup, 1))
     
     master1 = np.concatenate((largeGroup1, largeGroup2, largeGroup3))
     master2 = np.concatenate((largeGroup4, largeGroup5, largeGroup6))
     master = np.concatenate((master1, master2))
-    print(master[0:10])
     return master
     
 def arrayHamming(array1, array2):
