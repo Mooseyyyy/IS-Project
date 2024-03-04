@@ -10,7 +10,7 @@ sample = 30
 np.set_printoptions(linewidth=np.inf, formatter={'all': lambda x: " {:.0f} ".format(x)})
 
 # Initialization of RBM
-training_rbm = RBM(num_visible = 100, num_hidden = 30)
+training_rbm = RBM(num_visible = 100, num_hidden = 40)
 
 training_data = generate(60)
 
@@ -22,8 +22,8 @@ print("Done training")
 
 # Generate data
 print("Daydream Phase")
-for i in range(10):
+for i in range(50):
     array = training_rbm.daydream(sample)
-    result, name = compare(array[sample-1:sample])
-    if result == 'Good':
-        print(name)
+    newArray = array[sample-1:sample]
+    result, name = compare(newArray)
+    print(name)
