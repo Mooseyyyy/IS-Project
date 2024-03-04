@@ -10,13 +10,11 @@ sample = 2000
 np.set_printoptions(linewidth=np.inf, formatter={'all': lambda x: " {:.0f} ".format(x)})
 
 # Initialization of RBM
-training_rbm = RBM(num_visible = 100, num_hidden = 50)
+training_rbm = RBM(num_visible = 100, num_hidden = 200)
 
 training_data = generate(600)
 
 np.random.shuffle(training_data)
-
-print(training_data[0:10])
 
 # Training the model
 training_rbm.train(training_data, max_epochs = 5000)
