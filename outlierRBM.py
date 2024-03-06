@@ -4,20 +4,20 @@ import numpy as np
 from util import generate, compare
 
 # How many times to sample a dp
-sample = 4000
+sample = 5000
 
 # Numpy print settings to see activated nodes better
 np.set_printoptions(linewidth=np.inf, formatter={'all': lambda x: " {:.0f} ".format(x)})
 
 # Initialization of RBM
-training_rbm = RBM(num_visible = 100, num_hidden = 500)
+training_rbm = RBM(num_visible = 100, num_hidden = 1000)
 
 training_data = generate(600)
 
 np.random.shuffle(training_data)
 
 # Training the model
-training_rbm.train(training_data, max_epochs = 5000)
+training_rbm.train(training_data, max_epochs = 3000)
 print("Done training")
 
 # Generate data
