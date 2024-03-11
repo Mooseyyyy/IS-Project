@@ -3,21 +3,23 @@ from rbm import RBM
 import numpy as np
 from util import generate, compare
 
-# How many times to sample a dp
-sample = 9000
+# Parameters
+num_hidden = 800
+max_epochs = 2000
+sample = 8000
 
 # Numpy print settings to see activated nodes better
 np.set_printoptions(linewidth=np.inf, formatter={'all': lambda x: " {:.0f} ".format(x)})
 
 # Initialization of RBM
-training_rbm = RBM(num_visible = 100, num_hidden = 1000)
+training_rbm = RBM(num_visible = 100, num_hidden = num_hidden)
 
 training_data = generate(600)
 
 np.random.shuffle(training_data)
 
 # Training the model
-training_rbm.train(training_data, max_epochs = 5000)
+training_rbm.train(training_data, max_epochs = max_epochs)
 print("Done training")
 
 # Generate data
