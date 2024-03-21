@@ -4,22 +4,22 @@ import numpy as np
 from util import generate, compare
 
 # Parameters
-num_hidden = 800
-max_epochs = 2000
 sample = 8000
+hidden = 800
+epochs = 1000
 
 # Numpy print settings to see activated nodes better
 np.set_printoptions(linewidth=np.inf, formatter={'all': lambda x: " {:.0f} ".format(x)})
 
 # Initialization of RBM
-training_rbm = RBM(num_visible = 100, num_hidden = num_hidden)
+training_rbm = RBM(num_visible = 100, num_hidden = hidden)
 
-training_data = generate(600)
+training_data = generate(1000)
 
 np.random.shuffle(training_data)
 
 # Training the model
-training_rbm.train(training_data, max_epochs = max_epochs)
+training_rbm.train(training_data, max_epochs = epochs)
 print("Done training")
 
 # Generate data
@@ -31,7 +31,7 @@ countGroup3 = 0
 countGroup4 = 0
 countGroup5 = 0
 countGroup6 = 0
-for i in range(50):
+for i in range(10):
     array = training_rbm.daydream(sample)
     newArray = array[sample-1:sample]
     result, name = compare(newArray)
@@ -49,6 +49,7 @@ for i in range(50):
         countGroup5+=1
     if name == "Group 6":
         countGroup6+=1
+    #print(newArray)
     print(name)
 
 print(countBad)

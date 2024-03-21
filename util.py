@@ -15,14 +15,13 @@ def generate(size):
     global group4
     global group5
     global group6
-    dup = size // 6
 
-    largeGroup1 = np.tile(group1,(dup, 1))
-    largeGroup2 = np.tile(group2,(dup, 1))
-    largeGroup3 = np.tile(group3,(dup, 1))
-    largeGroup4 = np.tile(group5,(dup, 1))
-    largeGroup5 = np.tile(group4,(dup, 1))
-    largeGroup6 = np.tile(group6,(dup, 1))
+    largeGroup1 = np.tile(group1,(size, 1))
+    largeGroup2 = np.tile(group2,(size, 1))
+    largeGroup3 = np.tile(group3,(size, 1))
+    largeGroup4 = np.tile(group5,(size, 1))
+    largeGroup5 = np.tile(group4,(size, 1))
+    largeGroup6 = np.tile(group6,(size, 1))
     
     master1 = np.concatenate((largeGroup1, largeGroup2, largeGroup3))
     master2 = np.concatenate((largeGroup4, largeGroup5, largeGroup6))
@@ -30,10 +29,11 @@ def generate(size):
     return master
     
 def arrayHamming(array1, array2):
-    hamming_distance = hamming(array1, array2)
+    hamming_distance = hamming(array1, array2)*100
     return hamming_distance
 
 def compare(datapoint):
+    evalnum = 2
     global group1
     global group2
     global group3
@@ -51,22 +51,22 @@ def compare(datapoint):
     group5Ham = arrayHamming(flat, group5)
     group6Ham = arrayHamming(flat, group6)
 
-    if group1Ham < 0.1:
+    if group1Ham < evalnum:
         result = "Good"
         name = "Group 1"
-    elif group2Ham < 0.1:
+    elif group2Ham < evalnum:
         result = "Good"
         name = "Group 2"
-    elif group3Ham < 0.1:
+    elif group3Ham < evalnum:
         result = "Good"
         name = "Group 3"
-    elif group4Ham < 0.1:
+    elif group4Ham < evalnum:
         result = "Good"
         name = "Group 4"
-    elif group5Ham < 0.1:
+    elif group5Ham < evalnum:
         result = "Good"
         name = "Group 5"
-    elif group6Ham < 0.1:
+    elif group6Ham < evalnum:
         result = "Good"
         name = "Group 6"
 
